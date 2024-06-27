@@ -14,13 +14,11 @@ class Chronometer {
   }
 
   getMinutes() {
-    // ... your code goes here
-    return Math.floor(this.currentTime / 60);
+    return Math.floor(this.currentTime / 6000); // Centiseconds to minutes
   }
 
   getSeconds() {
-    // ... your code goes here
-    return this.currentTime % 60;
+    return Math.floor(this.currentTime / 100) % 60; // Centiseconds to seconds
   }
 
   getCentiseconds() {
@@ -44,9 +42,9 @@ class Chronometer {
   }
 
   split() {
-    // ... your code goes here
-    return `${this.computeTwoDigitNumber(
-      this.getMinutes()
-    )}:${this.computeTwoDigitNumber(this.getSeconds())}`;
+    const minutes = this.computeTwoDigitNumber(this.getMinutes());
+    const seconds = this.computeTwoDigitNumber(this.getSeconds());
+    const centiseconds = this.computeTwoDigitNumber(this.getCentiseconds());
+    return `${minutes}:${seconds}:${centiseconds}`;
   }
 }
